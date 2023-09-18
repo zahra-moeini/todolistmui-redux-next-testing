@@ -1,10 +1,14 @@
 "use client"
-import Form from '../components/Form'
+// import  Todos from '../components/Todos'
+import AddTodo from '../components/AddTodo'
+import ListTodo from '../components/ListTodo'
 
 export default function Home() {
   return (
     <>
-      <Form/>
+      <AddTodo/>
+      <ListTodo/>
+      {/* <Todos/> */}
     </>
   )
 }
