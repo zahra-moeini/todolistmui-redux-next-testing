@@ -6,6 +6,8 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { purple, red } from '@mui/material/colors';
+
 
 
 const AddTodo = () => {
@@ -54,7 +56,7 @@ const AddTodo = () => {
           </Box>
           <Box>
             <Button type='button' variant="outlined" onClick={add}>ADD </Button>
-            {contentError ? <div className='error'>{contentError}</div>: null}
+            {contentError ? <div >{contentError}</div>: null}
 
           </Box>
         </Stack>

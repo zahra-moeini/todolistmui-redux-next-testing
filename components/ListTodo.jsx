@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
-import { AiFillEdit, AiOutlineCloseCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteToDo, editTodo } from '../Reducers/toDoSlider';
+import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
+import Card from '@mui/material/Card';
+import Button from "@mui/material/Button";
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+
+
 
 const ListTodo = () => {
   
@@ -36,30 +43,44 @@ const ListTodo = () => {
     setEditing(false);
  }
   
-  return <div>
+  return <Box display={'flex'} justifyContent={'center'}>
       {
+       
           isEditing ?
-            <div className='form'>
+            <div>
                 <h2>Update your plan for today</h2>
-                <input type='text' value={content} name='content' onChange={handleChange}></input>
-                <button type='button' className='button' onClick={edit}>Edit</button>
-                {contentError ? <div className='error'>{contentError}</div>: null}
+                <Box
+            sx={{
+              width: 400,
+              maxWidth: "100%",
+            }}
+          >
+                <TextField fullWidth label="Add your todo-items" id="fullWidth" type='text' value={content} name='content' onChange={handleChange}/>
+                </Box>
+                <Box>
+                <Button type='button'variant="outlined" onClick={edit}>Edit</Button>
+                {contentError ? <span>{contentError}</span>: null}
+                </Box>
             </div>
       :
-      <ul className='todos'>
+      <ul className='todos' style={{listStyle:'none'}}>
           {
             todoList.map(({id, content})=> {
-                return <li className='grid' key={id}>
-                    <span className='content'>{content}</span>
-                    <span className='todo-action'>
-                      <AiOutlineCloseCircle className="close" onClick={() => dispatch(deleteToDo({id}))}/>
-                      <AiFillEdit className="edit" onClick={() =>onEditToggle(id, content)} />
+                return <li  key={id} >
+                  <Card style={{margin:5,padding:24 ,display:'flex',justifyContent:'space-between',
+                  background:'#eceff1'}}>
+                    <span >{content}</span>
+                    <span>
+                      <DeleteIcon color='error' onClick={() => dispatch(deleteToDo({id}))}/>
+                      <EditIcon  color='info' className="edit" onClick={() =>onEditToggle(id, content)} />
                     </span>
+                   </Card>
                 </li>
             }) 
           }
       </ul>}
-  </div>;
+     
+  </Box>;
 };
 
 export default ListTodo;
