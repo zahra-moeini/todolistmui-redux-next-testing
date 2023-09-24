@@ -23,7 +23,7 @@ const Todos = () => {
               maxWidth: "100%",
             }}
           >
-            <TextField fullWidth label="Add your todo-items" id="fullWidth" />
+            <TextField fullWidth label="Add todos" id="fullWidth" />
           </Box>
           <Box>
             <Button variant="outlined">ADD </Button>
